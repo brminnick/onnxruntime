@@ -1086,29 +1086,32 @@ void OpTester::Run(
         if (provider_type == onnxruntime::kCpuExecutionProvider) {
           const bool use_fixed_point_requant_on_arm64 =
               so.config_options.GetConfigOrDefault(kOrtSessionOptionsConfigFixedPointRequantOnARM64, "0") == "1";
-          execution_provider = DefaultCpuExecutionProvider(CPUExecutionProviderInfo(so.enable_cpu_mem_arena, use_fixed_point_requant_on_arm64));
-        } else if (provider_type == onnxruntime::kCudaExecutionProvider)
+          execution_provider = DefaultCpuExecutionProvider(
+              CPUExecutionProviderInfo(so.enable_cpu_mem_arena,
+                                       use_fixed_point_requant_on_arm64));
+        } else if (provider_type == onnxruntime::kCudaExecutionProvider) {
           execution_provider = DefaultCudaExecutionProvider();
-        else if (provider_type == onnxruntime::kDnnlExecutionProvider)
+        } else if (provider_type == onnxruntime::kDnnlExecutionProvider) {
           execution_provider = DefaultDnnlExecutionProvider();
-        else if (provider_type == onnxruntime::kOpenVINOExecutionProvider)
+        } else if (provider_type == onnxruntime::kOpenVINOExecutionProvider) {
           execution_provider = DefaultOpenVINOExecutionProvider();
-        else if (provider_type == onnxruntime::kNupharExecutionProvider)
+        } else if (provider_type == onnxruntime::kNupharExecutionProvider) {
           execution_provider = DefaultNupharExecutionProvider();
-        else if (provider_type == onnxruntime::kTensorrtExecutionProvider)
+        } else if (provider_type == onnxruntime::kTensorrtExecutionProvider) {
           execution_provider = DefaultTensorrtExecutionProvider();
-        else if (provider_type == onnxruntime::kNnapiExecutionProvider)
+        } else if (provider_type == onnxruntime::kNnapiExecutionProvider) {
           execution_provider = DefaultNnapiExecutionProvider();
-        else if (provider_type == onnxruntime::kRknpuExecutionProvider)
+        } else if (provider_type == onnxruntime::kRknpuExecutionProvider) {
           execution_provider = DefaultRknpuExecutionProvider();
-        else if (provider_type == onnxruntime::kAclExecutionProvider)
+        } else if (provider_type == onnxruntime::kAclExecutionProvider) {
           execution_provider = DefaultAclExecutionProvider();
-        else if (provider_type == onnxruntime::kArmNNExecutionProvider)
+        } else if (provider_type == onnxruntime::kArmNNExecutionProvider) {
           execution_provider = DefaultArmNNExecutionProvider();
-        else if (provider_type == onnxruntime::kRocmExecutionProvider)
+        } else if (provider_type == onnxruntime::kRocmExecutionProvider) {
           execution_provider = DefaultRocmExecutionProvider();
-        else if (provider_type == onnxruntime::kCoreMLExecutionProvider)
+        } else if (provider_type == onnxruntime::kCoreMLExecutionProvider) {
           execution_provider = DefaultCoreMLExecutionProvider();
+        }
         // skip if execution provider is disabled
         if (execution_provider == nullptr)
           continue;

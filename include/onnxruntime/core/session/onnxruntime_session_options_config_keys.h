@@ -130,8 +130,8 @@ static const char* const kOrtSessionOptionsConfigStrictShapeTypeInference = "ses
 //       min is the minimum value of type TOutput.
 //       max is the maximum value of type TOutput.
 // For considerations of power consumption and some ARM devices don't even have FPUs, it is import to to be able to run
-// quantization with integer instructions only.FixedPoint Requantization is introduced to support this feature.Its general
-// idea is to convert scale S to fixed point. Ruy and XNNPack's method are reffered for the implementation.
+// quantization with integer instructions only.FixedPoint Requantization is introduced to support this feature.
+// Its general idea is to convert scale S to fixed point. Ruy and XNNPack's method are referred for the implementation.
 // https://github.com/google/ruy/blob/a09683b8da7164b9c5704f88aef2dc65aa583e5d/ruy/apply_multiplier.cc#L48
 // https://github.com/google/XNNPACK/blob/1e37b200d3f4ba19151eb30c1c329873d541326c/src/params-init.c#L211
 // "0": disable. ORT uses float point based requantization on ARM devices.

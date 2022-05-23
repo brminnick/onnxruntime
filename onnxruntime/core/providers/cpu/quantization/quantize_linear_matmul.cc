@@ -95,7 +95,7 @@ Status QLinearMatMul::Compute(OpKernelContext* ctx) const {
     output_scales[i] = (a_scale_data * b_scale_data[i] / y_scale_data);
   }
 
-  #if defined(_M_ARM64) || defined(__aarch64__)
+#if defined(_M_ARM64) || defined(__aarch64__)
   std::vector<int32_t> pre_shifts;
   std::vector<int32_t> multipliers;
   std::vector<int32_t> post_shifts;

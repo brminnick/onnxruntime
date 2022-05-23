@@ -182,7 +182,7 @@ class QGemm : protected GemmBase, public MatMulIntegerBase {
                                Tensor* y,
                                MLAS_GEMM_QUANT_DATA_PARAMS& gemm_param,
                                std::unique_ptr<MLAS_QGEMM_SCALE_BIAS_OUTPUT_PROCESSOR>& scale_bias_proc_ptr,
-                               std::unique_ptr<MLAS_QGEMM_REQUANT_OUTPUT_PROCESSOR>& requant_proc_ptr, 
+                               std::unique_ptr<MLAS_QGEMM_REQUANT_OUTPUT_PROCESSOR>& requant_proc_ptr,
                                std::unique_ptr<MLAS_REQUANT_PARAM>& requant_param) {
     if (nullptr != y_zp) {
       bool is_y_signed = y->IsDataType<int8_t>();

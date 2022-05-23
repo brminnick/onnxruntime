@@ -623,7 +623,7 @@ struct MLAS_SYMM_QGEMM_DATA_PARAMS {
  * @param [IN] Shape        A single shape descriptor for all multiplicatons.
                             Currently A and B must be signed, and accumulation
                             mode not supported
- * @param [IN] DataParams   Array of data descriptors, one for each mutliplication
+ * @param [IN] DataParams   Array of data descriptors, one for each multiplication
  *                          B must be prepacked
  * @param [IN] BatchN       Number of multiplications
  * @param [IN] ThreadPool
