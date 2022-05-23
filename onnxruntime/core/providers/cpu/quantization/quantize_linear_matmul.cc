@@ -155,15 +155,15 @@ Status QLinearMatMul::Compute(OpKernelContext* ctx) const {
 #if defined(_M_ARM64) || defined(__aarch64__)
     if (use_fixed_point_requant_) {
       requant_params[i].RequantRoundKind = MLAS_ROUND_KIND::MlasRoundHalfUp;
-      requant_params[i].Scale = output_scales.data() + helper.RightScaleOffsets()[i];
-    } else {
-      requant_params[i].RequantRoundKind = MLAS_ROUND_KIND::MlasRoundHalfEven;
       requant_params[i].PreShift = pre_shifts.data() + helper.RightScaleOffsets()[i];
       requant_params[i].Multiplier = multipliers.data() + helper.RightScaleOffsets()[i];
       requant_params[i].PostShift = post_shifts.data() + helper.RightScaleOffsets()[i];
+    } else {
+      requant_params[i].RequantRoundKind = MLAS_ROUND_KIND::MlasRoundHalfEven;
+      requant_params[i].Scale = output_scales.data() + helper.RightScaleOffsets()[i];
     }
 #else
-    requant_params[i].RequantRoundKind = MLAS_ROUND_KIND::MlasRoundHalfUp;
+    requant_params[i].RequantRoundKind = MLAS_ROUND_KIND::MlasRoundHalfEven;
     requant_params[i].Scale = output_scales.data() + helper.RightScaleOffsets()[i];
 #endif
     requant_procs.emplace_back(static_cast<uint8_t*>(y->MutableDataRaw()) + helper.OutputOffsets()[i],

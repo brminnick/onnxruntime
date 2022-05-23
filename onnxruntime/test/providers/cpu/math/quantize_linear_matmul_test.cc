@@ -27,9 +27,9 @@ class OpTesterRequant : public OpTester {
     SessionOptions session_options;
     SetUpDefaultSessionOptions(session_options);
     for (auto use_fixed_point : {"0", "1"}) {
-      session_options.config_options.AddConfigEntry(
-          kOrtSessionOptionsConfigFixedPointRequantOnARM64,
-          use_fixed_point);
+      ASSERT_STATUS_OK(session_options.config_options.AddConfigEntry(
+        kOrtSessionOptionsConfigFixedPointRequantOnARM64,
+        use_fixed_point));
       OpTester::Run(session_options,
                     expect_result,
                     expected_failure_string,
@@ -50,9 +50,9 @@ class OpTesterRequant : public OpTester {
            /*out*/ size_t* number_of_pre_packed_weights_counter = nullptr,
            /*out*/ size_t* number_of_shared_pre_packed_weights_counter = nullptr) {
     for (auto use_fixed_point : {"0", "1"}) {
-      session_options.config_options.AddConfigEntry(
-          kOrtSessionOptionsConfigFixedPointRequantOnARM64,
-          use_fixed_point);
+      ASSERT_STATUS_OK(session_options.config_options.AddConfigEntry(
+        kOrtSessionOptionsConfigFixedPointRequantOnARM64,
+        use_fixed_point));
       OpTester::Run(session_options,
                     expect_result,
                     expected_failure_string,
